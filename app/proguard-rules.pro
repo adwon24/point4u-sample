@@ -22,3 +22,19 @@
 
 
 
+# ------------ Start : proguard for AdWon ------------
+-keep class com.adwon.** {*;}
+-dontwarn com.adwon.point4u.**
+# ble broadcast
+-keep class com.pci.** {*;}
+
+# gson
+-keepattributes Signature
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+# Retain generic signatures of TypeToken and its subclasses with R8 version 3.0 and higher.
+-keep,allowobfuscation,allowshrinking class com.google.gson.reflect.TypeToken
+-keep,allowobfuscation,allowshrinking class * extends com.google.gson.reflect.TypeToken
+# ------------ End : proguard for AdWon ------------
