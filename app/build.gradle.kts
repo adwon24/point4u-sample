@@ -43,5 +43,5 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-
+    implementation("io.github.adwon24:point4u:1.0.0.0")
 }
