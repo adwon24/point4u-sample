@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+            WindowInsetsCompat.CONSUMED
+            //insets
         }
 
         findViewById<AppCompatButton>(R.id.btn_point4u).setOnClickListener {
@@ -28,12 +29,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun startPoint4U() {
         val point4u = Point4U()
+        point4u.setPrimaryColor(this@MainActivity, "#ff749bfa") // 선택 사항 - 매체사의 primary color 값 세팅
+        point4u.setPrimaryLogoColor(this@MainActivity, "#ff749bfa") // 선택 사항 - 매체사의 primary color 값 세팅
         point4u.startPoint4U(
             activity = this@MainActivity,
             companyCode = POINT4U_TEST_COMPANY_CODE,
             sdkCode = POINT4U_TEST_SDK_CODE,
             memberId = POINT4U_TEST_MEMBER_ID,
-            age = POINT4U_TEST_MEMBER_AGE,
+            ageOrBirth = POINT4U_TEST_MEMBER_AGE,
             gender = POINT4U_TEST_MEMBER_GENDER
         )
     }
