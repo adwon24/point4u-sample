@@ -17,6 +17,15 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_point4u_step_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="step list"
+        app:layout_constraintLeft_toLeftOf="@id/btn_point4u"
+        app:layout_constraintTop_toBottomOf="@id/btn_point4u" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/adwon_action_bar_height"

@@ -2,6 +2,7 @@ package com.point4u.sample
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
@@ -25,8 +26,15 @@ class MainActivity : AppCompatActivity() {
         findViewById<AppCompatButton>(R.id.btn_point4u).setOnClickListener {
             startPoint4U()
         }
+
+        findViewById<AppCompatButton>(R.id.btn_point4u_step_list).setOnClickListener {
+            getStepList()
+        }
     }
 
+    /**
+     * point4u 시작 함수 테스트
+     */
     private fun startPoint4U() {
         val point4u = Point4U()
         point4u.setPrimaryColor(this@MainActivity, "#ff749bfa") // 선택 사항 - 매체사의 primary color 값 세팅
@@ -41,6 +49,17 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+    /**
+     * point4u 걸음 통계 데이터 반환 함수 테스트
+     */
+    private fun getStepList() {
+        val point4u = Point4U()
+        point4u.getStepCountList(this@MainActivity, startDate = "2025-11-01", endDate = "2025-11-13", object : Point4U.OnPoint4UStepListener {
+            override fun onPoint4UStepCountListResponse(stepCountList: ArrayList<Pair<String, Int>>?) {
+                Log.d("adwon", "onPoint4UStepCountListResponse : $stepCountList")
+            }
+        })
+    }
 
     companion object {
         const val POINT4U_TEST_COMPANY_CODE = "2e72dbd2-e246-4d4f-9d29-472712232c72"
